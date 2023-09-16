@@ -529,15 +529,15 @@ function isSupportedBrowser() {
   const isOpera = winNav.userAgent.indexOf('OPR') > -1;
   const isEdge = winNav.userAgent.indexOf('Edg') > -1;
   const isFirefox = winNav.userAgent.indexOf('Firefox') > -1;
-
+  const isSafari = winNav.userAgent.toLocaleLowerCase().indexOf('safari/') > -1;
   const isChrome =
     isChromium && vendorName === 'Google Inc.' && !isEdge && !isOpera;
 
-  const isSupported = isChrome || isOpera || isFirefox || isEdge;
+  const isSupported = isChrome || isOpera || isFirefox || isEdge || isSafari;
 
   if (!isSupported) {
     console.warn(
-      'Pusher Web Push Notifications supports Chrome, Firefox, Edge and Opera.'
+      'Pusher Web Push Notifications supports Chrome, Firefox, Edge, Safari, and Opera.'
     );
   }
   return isSupported;
